@@ -7,6 +7,8 @@ import Starships from './entities/Starships'
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 
+import { Heading } from 'react-bulma-components';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,13 +27,15 @@ function App() {
     <ApolloProvider client={client}>
       <Router className="App">
         <header className="App-header stars">
-          <h1 className="Title">SW-API<br/>WARS</h1>
+          <Heading size={2} className="Title">SW-API<br/>WARS</Heading>
           <EntityNavigation/>
+          
           <Switch>
             <Route path="/starships/:page">
               <Starships />
             </Route>
           </Switch>
+          <p className="Credit">By Regan Iwadha/melunian</p>
         </header>
       </Router>
     </ApolloProvider>

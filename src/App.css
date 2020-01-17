@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Roboto+Mono:300i&display=swap');
 
 .App {
     text-align: center;
@@ -8,15 +8,20 @@
     height: 40vmin;
   }
   
-  
   .Title{
-    color:#ffd700;
+    color:#ffd700!important;
     text-transform: capitalize;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     text-align:center;
   }
   
+  .Credit {
+    color : rgb(65, 65, 65);
+    font-size: x-small!important;
+  font-family: 'Roboto Mono', monospace;
+  }
+
   .App-header {
     background-color:rgb(9, 11, 12)!important;
     min-height: 100vh;
