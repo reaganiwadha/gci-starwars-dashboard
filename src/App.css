@@ -6,8 +6,18 @@
   height: 40vmin;
 }
 
+.stars{
+  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index:0;
+}
+
+.Title{
+  color:#ffd700;
+  text-transform: capitalize;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color:#000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
