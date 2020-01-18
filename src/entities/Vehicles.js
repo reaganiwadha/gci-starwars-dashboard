@@ -9,11 +9,11 @@ import Paginator from '../Paginator.js'
 
 import './customcards.css'
 
-import { Button, Container, Table} from 'react-bulma-components';
+import { Button,  Container, Table} from 'react-bulma-components';
 
 const Q = gql`
-  query AllStarships($first: Int, $skip: Int) {
-    allStarships(first: $first, skip: $skip) {
+  query AllVehicles($first: Int, $skip: Int) {
+    allVehicles(first: $first, skip: $skip) {
       id
       name
       consumables
@@ -21,7 +21,7 @@ const Q = gql`
       manufacturer
       cargoCapacity
       crew
-      hyperdriveRating
+      maxAtmospheringSpeed
     }
   }
 `;
@@ -30,7 +30,7 @@ const Q = gql`
 const perPage = 10;
 const checkOffset = 5;
 
-const Starships = () => {
+const Vehicles = () => {
   let { page } = useParams();
 
   if(page===null){
@@ -63,32 +63,32 @@ const Starships = () => {
                   <th>Cargo Capacity</th>
                   <th>Consumables</th>
                   <th>Crew</th>
-                  <th>Hyperdrive Rating</th>
-                  <th>Manufacturer</th>
+                  <th>Max Athmosphering Speed</th>
+                  
                 </tr>
               </thead>
               <tbody>
-                {data.allStarships.map((ship,i) => (
+                {data.allVehicles.map((v,i) => (
                   i < perPage && 
-                  <tr key={ship.id}>
+                  <tr key={v.id}>
                     <th>{i+1 + perPage * (page - 1)}</th>
-                    <th>{ship.name}</th>
-                    <th>{ship.costInCredits}</th>
-                    <th>{ship.cargoCapacity}</th>
-                    <th>{ship.consumables}</th>
-                    <th>{ship.crew}</th>
-                    <th>{ship.hyperdriveRating}</th>
-                    <th>{ship.manufacturer}</th>
+                    <th>{v.name}</th>
+                    <th>{v.costInCredits}</th>
+                    <th>{v.cargoCapacity}</th>
+                    <th>{v.consumables}</th>
+                    <th>{v.crew}</th>
+                    <th>{v.maxAtmospheringSpeed}</th>
+                    
                   </tr>
                 ))}
 
-                {isAbleToNext = data.allStarships.length > perPage}
+                {isAbleToNext = data.allVehicles.length > perPage}
               </tbody>
             </Table>
             <Container>
             <Paginator
              current={parseInt(page)} 
-             path={"/starships/"}
+             path={"/vehicles/"}
              isAbleToNext={isAbleToNext}
              isAbleToPrevious={isAbleToPrevious}
              />
@@ -100,4 +100,4 @@ const Starships = () => {
   );
 };
 
-export default Starships;
+export default Vehicles;

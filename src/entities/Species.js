@@ -12,16 +12,14 @@ import './customcards.css'
 import { Button, Container, Table} from 'react-bulma-components';
 
 const Q = gql`
-  query AllStarships($first: Int, $skip: Int) {
-    allStarships(first: $first, skip: $skip) {
+  query AllSpecies($first: Int, $skip: Int) {
+    allSpecies(first: $first, skip: $skip) {
       id
       name
-      consumables
-      costInCredits
-      manufacturer
-      cargoCapacity
-      crew
-      hyperdriveRating
+      averageHeight
+      averageLifespan
+      classification
+      designation
     }
   }
 `;
@@ -30,7 +28,7 @@ const Q = gql`
 const perPage = 10;
 const checkOffset = 5;
 
-const Starships = () => {
+const Species = () => {
   let { page } = useParams();
 
   if(page===null){
@@ -59,36 +57,33 @@ const Starships = () => {
                 <tr>
                   <th>No</th>
                   <th>Name</th>
-                  <th>Cost in Credits</th>
-                  <th>Cargo Capacity</th>
-                  <th>Consumables</th>
-                  <th>Crew</th>
-                  <th>Hyperdrive Rating</th>
-                  <th>Manufacturer</th>
+                  <th>Average Height</th>
+                  <th>Average Lifespan</th>
+                  <th>Classification</th>
+                  <th>Designation</th>
                 </tr>
               </thead>
               <tbody>
-                {data.allStarships.map((ship,i) => (
+                {data.allSpecies.map((v,i) => (
                   i < perPage && 
-                  <tr key={ship.id}>
+                  <tr key={v.id}>
                     <th>{i+1 + perPage * (page - 1)}</th>
-                    <th>{ship.name}</th>
-                    <th>{ship.costInCredits}</th>
-                    <th>{ship.cargoCapacity}</th>
-                    <th>{ship.consumables}</th>
-                    <th>{ship.crew}</th>
-                    <th>{ship.hyperdriveRating}</th>
-                    <th>{ship.manufacturer}</th>
+                    <th>{v.name}</th>
+                    <th>{v.averageHeight}</th>
+                    <th>{v.averageLifespan}</th>
+                    <th>{v.classification}</th>
+                    <th>{v.designation}</th>
+                    
+                    
                   </tr>
                 ))}
-
-                {isAbleToNext = data.allStarships.length > perPage}
+                {isAbleToNext = data.allSpecies.length > perPage}
               </tbody>
             </Table>
             <Container>
             <Paginator
              current={parseInt(page)} 
-             path={"/starships/"}
+             path={"/species/"}
              isAbleToNext={isAbleToNext}
              isAbleToPrevious={isAbleToPrevious}
              />
@@ -100,4 +95,4 @@ const Starships = () => {
   );
 };
 
-export default Starships;
+export default Species;
