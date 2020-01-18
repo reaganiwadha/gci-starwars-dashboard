@@ -13,7 +13,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 import EntityNavigation from './EntityNavigation';
@@ -28,14 +29,16 @@ function App() {
       <Router className="App">
         <header className="App-header stars">
           <Heading size={2} className="Title">SW-API<br/>WARS</Heading>
+          <a href="https://github.com/reaganiwadha/gci-starwars-dashboard" className="Credit">By Regan Iwadha/melunian</a>
           <EntityNavigation/>
-          
           <Switch>
             <Route path="/starships/:page">
               <Starships />
             </Route>
+            <Route path="/starships">            
+              <Redirect to="/starships/1" />
+            </Route>
           </Switch>
-          <p className="Credit">By Regan Iwadha/melunian</p>
         </header>
       </Router>
     </ApolloProvider>
